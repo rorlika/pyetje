@@ -71,7 +71,7 @@ a {
 }
 .table {
     display: table;   /* Allow the centering to work */
-    margin: 0 auto;
+    margin: -15px auto;
 }
 
 ul#horizontal-list {
@@ -119,7 +119,7 @@ button.btn-lg {
 }
 
 .stats {
-    margin: 0 0 0 0;
+    margin: -42px 0 0 0;
     width: 58px;
 }
 
