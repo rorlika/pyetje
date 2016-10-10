@@ -1,0 +1,22 @@
+<script type=text/javascript>
+  $(function() {
+    $('a#add').bind('click', function() {
+      $.getJSON($SCRIPT_ROOT + '/_add_numbers', {
+        catgr: $('input[name="catgr"]').val()
+      }, function(data) {
+        $("#result").text(data.result);
+        $("#mydiv").load(" #mydiv");
+      });
+      return false;
+    });
+    $(".add-category").hide();
+    $('#toggle').click(function() {
+      $('.add-category').slideToggle(30);
+      return false;
+    });
+  });
+</script>
+<strong class="add-category"><input type="text" name="catgr" placeholder="Favorite category" class="form-control field-add" />
+<a href=# id="add"><span class="label label-primary add">Add</span></a>
+</strong>
+

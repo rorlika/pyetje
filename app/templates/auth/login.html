@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}Flask - Login {% endblock %}
+
+{% block page_content %}
+            <div class="main">
+                <div class="main-section">
+                    <div class="login-section">
+                        <h2>Login to Pyetje me vend</h2>
+                        <div class="login-top">
+                            <p>Login with social</p>
+                            <ul>
+                                <li><a class="face" href="{{ url_for('auth.oauth_authorize', provider='facebook') }}"><span class="face"> </span>Login with Facebook</a></li>
+                                <li><a class="twit" href="{{ url_for('auth.oauth_authorize', provider='twitter') }}"><span class="twit"> </span>Login with Twitter</a></li>
+                            </ul>
+                        </div>
+                        <div class="login-middle">
+                            <p>Log in with your email and password</p>
+                            {% for message in form.email.errors %}
+                              <div class="flash">{{ message }}</div>
+                            {% endfor %}
+                            
+                            <form action="{{ url_for('auth.login') }}" method="post" class="login-form">
+                                {{ form.hidden_tag() }}
+                                <input type="text" name="email" placeholder="Email"/>
+                                <input type="password" name="password" placeholder="Password" />
+                                <div class="login-btn">
+                                    <a href="{{ url_for('auth.password_reset_request') }}">Forgot your password?</a>
+                                    <input type="submit" value="Login"/>
+                                </div>
+                                {{ form.csrf_token }}
+                            </form>
+                        </div>
+                        <div class="login-bottom">
+                            
+                            <div class="login-left">
+                                <a href="{{ url_for('auth.register') }}">Sign Up Now!</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+{% endblock %}

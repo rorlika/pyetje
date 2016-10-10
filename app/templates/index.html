@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% import "_macros.html" as macros %}
+
+{% block title %}Flasky{% endblock %}
+
+{% block page_content %}
+<div class="row">
+        <div class="col-sm-8" >
+            <div>
+                {% if current_user.can(Permission.WRITE_ARTICLES) %}
+                {{ wtf.quick_form(form) }}
+                {% endif %}
+
+            </div>
+            <div class="question-tabs">
+                <ul class="nav nav-tabs">
+                    <li{% if not show_followed %} class="active"{% endif %}><a href="{{ url_for('.show_all') }}">All</a></li>
+                    {% if current_user.is_authenticated %}
+                    <li{% if show_followed == '1' %} class="active"{% endif %}><a href="{{ url_for('.show_followed') }}">interesting</a></li>
+                    <li{% if show_followed == '3' %} class="active"{% endif %}><a href="{{ url_for('.noanswers') }}">No answers</a></li>
+                    <li{% if show_followed == '2' %} class="active"{% endif %}><a href="{{ url_for('.question_followed') }}">question by users</a></li>
+                    {% endif %}
+                </ul>
+                {% include '_questions.html' %}
+            </div>
+            {% if pagination %}
+            <div class="pagination">
+                {{ macros.pagination_widget(pagination, '.index') }}
+            </div>
+        </div>
+        <div class="col-sm-3 col-sm-offset-1 sidebar">
+            {% if current_user.is_authenticated %}
+                {% include '_sidebar.html' %}
+            {% endif %}
+        </div>
+</div>
+{% endif %}
+{% endblock %}
+
+{% block scripts %}
+{{ super() }}
+<script>
+        $(function () {
+            var inpt = "{{clist}}"
+            var i = 0;
+            var listinpt = []
+            while (inpt.split("&#39;")[i]){
+                listinpt[i] = inpt.split("&#39;")[i];
+                i++;
+            }
+            var $tokenfieled = $('#categories');
+                if ($tokenfieled.data('tagator') === undefined) {
+                    $tokenfieled.tagator({
+                        autocomplete: listinpt,
+                        useDimmer: true
+                    });
+                    
+                }
+        });
+    </script>
+{{ pagedown.include_pagedown() }}
+{% endblock %}

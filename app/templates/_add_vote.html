@@ -1,0 +1,51 @@
+<script type="text/javascript">
+  $(function() {
+    var submit_form_plus = function(e) {
+      $.getJSON($SCRIPT_ROOT + '/_add_vote', {
+        result: $('strong[name="vote"]').text(),
+        plus_minus: $('input[name="plus"]').val(),
+        id: $('input[name="question_id"]').val()
+      }, function(data) {
+        if (data.result){
+          $('#resultvote').text(data.result);
+        }
+        else {
+          var msg = data.message;
+          alertify.maxLogItems(1).delay(5000).logPosition("bottom right").log(msg);
+        }
+        
+      });
+      return false;
+    };
+
+    var submit_form_minus = function(e) {
+      $.getJSON($SCRIPT_ROOT + '/_add_vote', {
+        result: $('strong[name="vote"]').text(),
+        plus_minus: $('input[name="minus"]').val(),
+        id: $('input[name="question_id"]').val()
+      }, function(data) {
+        if (data.result){
+          $('#resultvote').text(data.result);
+        }
+        else {
+          var msg = data.message;
+          alertify.maxLogItems(1).delay(5000).logPosition("bottom right").log(msg);
+        }
+        
+      });
+      return false;
+    };
+    $('a#plus').bind('click', submit_form_plus);
+    $('a#minus').bind('click', submit_form_minus);
+
+  });
+
+</script>
+<p>
+  
+  <input type="hidden" size="5" name="plus" value=1>
+  <input type="hidden" size="5" name="minus" value=-1>
+  
+<p>
+<a href=# id="plus" data-toggle="popover">plus</a>
+<a href=# id="minus">minus</a>

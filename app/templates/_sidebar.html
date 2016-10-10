@@ -1,0 +1,41 @@
+<div class="sidebar-module sidebar-module-inset">
+          	<div class="title" id="title">Top Categories<button type="button" id="toggle" class="btn btn-default btn-lg">
+  <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+</button></button></div>
+  				{% include '_add_category.html' %}
+				<div id="mydiv">
+					<ul class="list-unstyled" style="padding:18px;">
+		  				{% for cat in categori %}
+		  					<li><a href="{{url_for('.categori', name=cat.name )}}">{{cat.name}}</a></li>
+		  				{% endfor %}
+              <li id="result"></li>
+  					</ul>
+  				</div>
+          </div>
+          <div class="sidebar-module">
+            <div class="title" >Top Answeres</div>
+            <ol class="list-unstyled" style="padding:18px;">
+              <li><a href="#">March 2014</a></li>
+              <li><a href="#">February 2014</a></li>
+              <li><a href="#">January 2014</a></li>
+              <li><a href="#">December 2013</a></li>
+              <li><a href="#">November 2013</a></li>
+              <li><a href="#">October 2013</a></li>
+              <li><a href="#">September 2013</a></li>
+              <li><a href="#">August 2013</a></li>
+              <li><a href="#">July 2013</a></li>
+              <li><a href="#">June 2013</a></li>
+              <li><a href="#">May 2013</a></li>
+              <li><a href="#">April 2013</a></li>
+            </ol>
+          </div>
+          <div class="sidebar-module">
+            <div class="title">Elsewhere</div>
+            <ol class="list-unstyled" style="padding:18px;">
+              <li><a href="#">GitHub</a></li>
+              <li><a href="#">Twitter</a></li>
+              <li><a href="#">Facebook</a></li>
+            </ol>
+          </div>
+        </div><!-- /.blog-sidebar -->
+    </div>

@@ -1,0 +1,88 @@
+{% for question in questions %}
+    <strong name="message" id="message"></strong>
+        <div class="question-summary" >
+            <div class="started fr">
+                {% if current_user == question.author %}
+                <a href="{{ url_for('.edit', id=question.id) }}">
+                    <span class="label label-primary">Edit</span>
+                </a>
+                {% elif current_user.is_administrator() %}
+                <a href="{{ url_for('.edit', id=question.id) }}">
+                    <span class="label label-danger">Edit [Admin]</span>
+                </a>
+                {% endif %}
+                <div class="user-info ">
+                    <div class="user-gravatar32">
+                        <a href="{{ url_for('.user', username=question.author.username) }}"><div class="gravatar-wrapper-32"><img src="{{ question.author.gravatar(size=32) }}" alt="" height="32" width="32"></div></a>
+                    </div>
+                    <div class="user-details">
+                        <a href="{{ url_for('.user', username=question.author.username) }}">{{ question.author.username }}</a>
+                        <div class="-flair">
+                            <span class="reputation-score" title="reputation score " dir="ltr">106</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="summary">
+                <div class="user-action-time">
+                        asked <span title='{{ moment(question.timestamp).fromNow() }}' class="relativetime">{{ moment(question.timestamp).fromNow() }}</span>
+                </div>
+                <h3>
+                    <a href="{{ url_for('.question', id=question.id) }}" class="question-hyperlink">
+                        {{ question.qust }}
+                    </a>
+                </h3>
+                <div class="excerpt question-{{question.id}}">
+                    {% if question.body_html %}
+                            {{ question.body_html | safe }}
+                    {% else %}
+                            {{ question.body }}
+                    {% endif %}
+                </div>         
+                {% if tags.has_key(question.id) %}
+                    <div class="table">
+                        <ul id="horizontal-list">
+                            {% for x in tags[question.id] %}
+                                <li><a href="{{url_for('.categori', name=x )}}">{{ x }}</a></li>
+                            {%endfor%}
+                        </ul>
+                    </div>
+                {% endif %}
+                <div class="statscontainer">
+                    <div class="stats">
+                        <div class="vote">
+                            <div class="votes">
+                                <span class="vote-count-post "></span>
+                                <strong name="vote" id="resultvote">{{ question.votat|int }}</strong><strong> vote</strong>
+                                <input type="hidden" size="5" name="question_id" value="{{ question.id }}">
+                            </div>
+                        </div>
+                        <div class="status answered">
+                            <strong>{{ question.comments.count() }}</strong><strong> answer</strong>
+                        </div>
+                    </div>
+                    <div class="views " title="15 views">
+                        <strong>{{question.views}}</strong><strong> views</strong> 
+                    </div>
+                </div>
+            </div>
+
+</div>
+        <script type="text/javascript">
+            $(function() {
+                var limit = 15;
+                var chars = "{{ question.body }}"; 
+                if (chars.length > limit) {
+                    var visiblePart = $("<span> "+ chars.substr(0, limit-1) +"</span>");
+                    var dots = $("<span class='dots'> ... </span>");
+                    var hiddenPart = $("<span class='more'>"+ chars.substr(limit-1) +"</span>");
+
+                    $(".question-{{question.id}}").empty()
+                        .append(visiblePart)
+                        .append(dots)
+                       }
+                   });
+        </script>
+    {% endfor %}
+ 
