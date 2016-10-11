@@ -69,20 +69,5 @@
             </div>
 
 </div>
-        <script type="text/javascript">
-            $(function() {
-                var limit = 185;
-                var chars = "{{ question.body }}"; 
-                if (chars.length > limit) {
-                    var visiblePart = $("<span> "+ chars.substr(0, limit-1) +"</span>");
-                    var dots = $("<span class='dots'> ... </span>");
-                    var hiddenPart = $("<span class='more'>"+ chars.substr(limit-1) +"</span>");
-
-                    $(".question-{{question.id}}").empty()
-                        .append(visiblePart)
-                        .append(dots)
-                       }
-                   });
-        </script>
     {% endfor %}
  
