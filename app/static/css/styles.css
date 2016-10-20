@@ -25,6 +25,11 @@ body {
     width: 728px;
     border-bottom: 1px solid #eff0f1;
 }
+.updown {
+    margin-left: 346px;
+    font-size: 26px;
+    margin-bottom: -14px;
+}
 .tagator_input {
     margin-top: -2px;
 }

@@ -106,7 +106,7 @@ def index():
         tags[x.id] = ls
 
     return render_template('index.html',form=form,questions=questions,\
-        show_followed=show_followed,pagination=pagination,categori=categori,tags=tags,clist=clist)
+        show_followed=show_followed,pagination=pagination,categori=categori,tags=tags,clist=clist,state=False)
 
 @main.route('/all')
 @login_required
@@ -235,7 +235,7 @@ def question(id):
         error_out=False)
     comments = pagination.items
     return render_template('question.html', questions=[question], form=form,
-                           comments=comments, pagination=pagination, tags=tags)
+                           comments=comments, pagination=pagination, tags=tags,state=True)
 
 @main.route('/category/<name>')
 @login_required

@@ -49,6 +49,10 @@
                         </ul>
                     </div>
                 {% endif %}
+                <div class="{% if state %}updown{% else %}hidden{% endif %}">
+                    <a href=# id="plus"><span class="glyphicon glyphicon-hand-up"></span></a>
+                    <a href=# id="minus"><span class="glyphicon glyphicon-hand-down"></span></a>
+                </div>
                 <div class="statscontainer">
                     <div class="stats">
                         <div class="vote">
