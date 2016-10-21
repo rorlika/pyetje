@@ -202,6 +202,7 @@ def edit_profile_admin(id):
 @main.route('/question/<int:id>', methods=['GET', 'POST'])
 def question(id):
     question = Question.query.get_or_404(id)
+    checkup =  query = Vote.query.filter(Vote.author_id==current_user.id , Vote.question_id==id).first()
     minus = Vote.query.with_entities(Vote.disabled, db.func.count()).filter((Vote.disabled == 0)\
         & (Vote.question_id == id)).all()
     plus = Vote.query.with_entities(Vote.disabled, db.func.count()).filter((Vote.disabled == 1)\
@@ -235,7 +236,7 @@ def question(id):
         error_out=False)
     comments = pagination.items
     return render_template('question.html', questions=[question], form=form,
-                           comments=comments, pagination=pagination, tags=tags,state=True)
+                           comments=comments, pagination=pagination, tags=tags,state=True,checkup=checkup)
 
 @main.route('/category/<name>')
 @login_required
@@ -269,6 +270,17 @@ def edit(id):
     form.body.data = question.body
     form.qust.data = question.qust
     return render_template('edit_post.html',form=form)
+
+@main.route('/delete/<int:id>')
+@login_required
+def delete(id):
+    question = Question.query.get_or_404(id)
+    if current_user != question.author and not current_user.can(Permission.ADMINISTER):
+        abort(403)
+    q = Question.query.filter_by(id=id).first()
+    Potoca.query.filter_by(question_id=id).delete(synchronize_session=False)
+    db.session.delete(q)
+    return redirect(url_for('.index'))
 
 @main.route('/follow/<username>')
 @login_required

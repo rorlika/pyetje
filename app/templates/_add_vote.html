@@ -8,6 +8,7 @@
       }, function(data) {
         if (data.result){
           $('#resultvote').text(data.result);
+          $('#plus').addClass("red");
         }
         else {
           var msg = data.message;
@@ -26,6 +27,7 @@
       }, function(data) {
         if (data.result){
           $('#resultvote').text(data.result);
+          $('#minus').addClass("red");
         }
         else {
           var msg = data.message;

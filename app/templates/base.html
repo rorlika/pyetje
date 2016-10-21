@@ -7,6 +7,7 @@
 	<link rel="stylesheet" href="{{url_for('static', filename='css/styles.css')}}">
 	<link rel="stylesheet" href="{{ url_for('static', filename='css/token-input-facebook.css')}}" type="text/css" />
 	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/alertify.css')}}">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
 	<script type="text/javascript">
   		var $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
 	</script>
@@ -18,6 +19,7 @@
 <script type="text/javascript" async
   src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
 </script>
+<script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
 
 {{ moment.include_moment() }}
 {% endblock %}

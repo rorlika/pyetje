@@ -1,32 +1,38 @@
 {% for question in questions %}
     <strong name="message" id="message"></strong>
+    <div class="colorb">
         <div class="question-summary" >
             <div class="started fr">
-                {% if current_user == question.author %}
-                <a href="{{ url_for('.edit', id=question.id) }}">
-                    <span class="label label-primary">Edit</span>
-                </a>
-                {% elif current_user.is_administrator() %}
-                <a href="{{ url_for('.edit', id=question.id) }}">
-                    <span class="label label-danger">Edit [Admin]</span>
-                </a>
-                {% endif %}
-                <div class="user-info ">
+                <div class="user-info">
                     <div class="user-gravatar32">
                         <a href="{{ url_for('.user', username=question.author.username) }}"><div class="gravatar-wrapper-32"><img src="{{ question.author.gravatar(size=32) }}" alt="" height="32" width="32"></div></a>
                     </div>
                     <div class="user-details">
                         <a href="{{ url_for('.user', username=question.author.username) }}">{{ question.author.username }}</a>
-                        <div class="-flair">
-                            <span class="reputation-score" title="reputation score " dir="ltr">106</span>
-                        </div>
+                        <span class="reputation-score" title="reputation score " dir="ltr">106</span>
+                    </div>
+                </div>
+                <div class="user-action-time">
+                    <div class="time">
+                        asked <span title='{{ moment(question.timestamp).fromNow() }}' class="relativetime">{{ moment(question.timestamp).fromNow() }}</span>
                     </div>
                 </div>
             </div>
 
             <div class="summary">
-                <div class="user-action-time">
-                        asked <span title='{{ moment(question.timestamp).fromNow() }}' class="relativetime">{{ moment(question.timestamp).fromNow() }}</span>
+                <div class="tools">
+                    {% if current_user == question.author %}
+                    <a href="{{ url_for('.edit', id=question.id) }}">
+                        <span class="glyphicon glyphicon-pencil"></span>
+                    </a>
+                    <a href="{{ url_for('.delete', id=question.id) }}">
+                        <span class="glyphicon glyphicon-trash"></span>
+                    </a>
+                    {% elif current_user.is_administrator() %}
+                    <a href="{{ url_for('.edit', id=question.id) }}">
+                        <span class="label label-danger">Edit [Admin]</span>
+                    </a>
+                    {% endif %}
                 </div>
                 <h3>
                     <a href="{{ url_for('.question', id=question.id) }}" class="question-hyperlink">
@@ -71,7 +77,7 @@
                     </div>
                 </div>
             </div>
-
-</div>
+        </div>
+    </div>
     {% endfor %}
  

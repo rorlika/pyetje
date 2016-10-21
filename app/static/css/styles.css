@@ -15,18 +15,34 @@ body {
     margin-left: 280px;
 }
 .question-summary {
-    padding: 12px 0 10px 0;
-    border-bottom: 1px solid #eaeaea;
-}
-.question-summary {
     overflow: hidden;
-    padding: 15px 0;
+    padding: 0 0 30px 0;
     float: left;
-    width: 728px;
-    border-bottom: 1px solid #eff0f1;
+    width: 750px;
+    border-bottom: 1px solid #fff;
+    background-color: #F0F0F0;
+}
+.tools {
+    margin-top: 5px;
+    float: right;
+    margin-right: 15px;
+}
+.time {
+    margin-right: -234px;
+    width: 128px;
+    margin-top: 8px;
+    color: darkgray;
+    float: right;
+    text-align: right;
+}
+.gravatar-wrapper-32 {
+    margin-top: 33px;
+}
+.red {
+    color: red;
 }
 .updown {
-    margin-left: 346px;
+    margin-left: 390px;
     font-size: 26px;
     margin-bottom: -14px;
 }
@@ -76,7 +92,7 @@ a {
 }
 .table {
     display: table;   /* Allow the centering to work */
-    margin: -15px auto;
+    margin: -10px 0 0 1px;
 }
 
 ul#horizontal-list {
@@ -89,7 +105,7 @@ ul#horizontal-list li {
     padding: 8px;
     display: inline;
     color: #39739d;
-    background-color: #E1ECF4;
+    background-color: #F0F0F0;
     border-color: transparent;
 }
 .statscontainer {
@@ -155,8 +171,10 @@ button.btn-lg {
 }
 .summary {
     float: left;
-    width: 630px;
+    width: 690px;
     margin-left: 46px;
+    padding: 0 0 5px 10px;
+    background-color: #fff;
 }
 .excerpt {
     padding: 0;
@@ -172,7 +190,7 @@ button.btn-lg {
     float: left;
 }
 .started {
-    width: 200px;
+    width: 500px;
     float: left;
     line-height: 18px;
 }
@@ -192,10 +210,9 @@ button.btn-lg {
     margin-bottom: 4px;
     font-size: 12px;
     white-space: nowrap;
-    margin-bottom: 2px;
     color: #9fa6ad;
-    margin-top: -19px;
 }
+
 .user-info .user-gravatar32 {
     float: left;
     width: 32px;
@@ -208,6 +225,7 @@ button.btn-lg {
 }
 .user-info .user-details {
     float: left;
+    margin-top: 15px;
     width: 100%;
 }
 .user-details {
@@ -377,6 +395,7 @@ div.flask-pagedown-preview h3 {
 }
 .question-body h3 {
     font-size: 120%;
+    padding-top: -20px;
 }
 .table.followers tr {
     border-bottom: 1px solid #e0e0e0;
