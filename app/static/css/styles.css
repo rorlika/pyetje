@@ -16,27 +16,27 @@ body {
 }
 .question-summary {
     overflow: hidden;
-    padding: 0 0 30px 0;
+    padding: 10px 0 30px 0;
     float: left;
     width: 750px;
     border-bottom: 1px solid #fff;
     background-color: #F0F0F0;
 }
 .tools {
-    margin-top: 5px;
+    margin-top: 28px;
     float: right;
-    margin-right: 15px;
 }
 .time {
-    margin-right: -234px;
-    width: 128px;
+    margin-right: -219px;
+    width: 148px;
     margin-top: 8px;
     color: darkgray;
     float: right;
     text-align: right;
 }
 .gravatar-wrapper-32 {
-    margin-top: 33px;
+    margin-top: 12px;
+    margin-left: -8px;
 }
 .red {
     color: red;
@@ -102,7 +102,7 @@ ul#horizontal-list {
     margin-left: -42px;
     }
 ul#horizontal-list li {
-    padding: 8px;
+    padding: 4px;
     display: inline;
     color: #39739d;
     background-color: #F0F0F0;
@@ -170,17 +170,19 @@ button.btn-lg {
     font-size: 18px;
 }
 .summary {
-    float: left;
     width: 690px;
     margin-left: 46px;
-    padding: 0 0 5px 10px;
+    padding: 5px 10px 30px 10px;
     background-color: #fff;
+    margin-top: 16px;
 }
 .excerpt {
     padding: 0;
     padding-bottom: 5px;
     margin: 0;
     color: #3b4045;
+    font-size: 15px;
+    color: black;
 }
 .tags {
     line-height: 18px;
@@ -193,6 +195,7 @@ button.btn-lg {
     width: 500px;
     float: left;
     line-height: 18px;
+    margin-left: 8px;
 }
 .started .user-info, .started .reputation-score {
     color: #9fa6ad;
@@ -270,7 +273,7 @@ b, strong {
     font-weight: normal;
 }
 div.question-summary .answer-hyperlink, .question-summary .question-hyperlink {
-    font-size: 16px;
+    font-size: 18px;
 }
 div.question-hyperlink, .answer-hyperlink {
     color: #2980b9;

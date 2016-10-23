@@ -67,8 +67,11 @@ class Question(db.Model):
     def on_changed_body(target,value,oldvalue,initiator):
         allowed_tags = ['a', 'abbr', 'acronym', 'b', 'blockquote', 'code',
                         'em', 'i', 'li', 'ol', 'pre', 'strong', 'ul',
-                        'h1', 'h2', 'h3', 'p','img','table','tbody','tr','td']
-        target.body_html = bleach.linkify(bleach.clean(markdown(value,output_format='html'),tags=allowed_tags,strip=True))
+                        'h1', 'h2', 'h3', 'p','video', 'div', 'iframe', 'p', 'br', 'span', 'hr','class']
+        allowed_attrs = {'*': ['class'],
+                        'a': ['href', 'rel'],
+                        'img': ['src', 'alt']}
+        target.body_html = bleach.linkify(bleach.clean(markdown(value,output_format='html'),tags=allowed_tags,strip=True,attributes=allowed_attrs))
 
     @staticmethod
     def generate_fake(count=100):

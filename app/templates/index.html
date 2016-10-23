@@ -95,15 +95,5 @@
                 /* end ready */    
                 });
         </script>
-<script type="text/javascript"> 
-    new SimpleMDE({
-        element: document.getElementById("flask-pagedown-body"),
-        spellChecker: false,
-        autosave: {
-            enabled: true,
-            unique_id: "flask-pagedown-body",
-        },
-    });
-</script>
 {{ pagedown.include_pagedown() }}
 {% endblock %}
